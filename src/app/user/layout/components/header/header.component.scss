@@ -1,0 +1,189 @@
+@use '../../../../scss/variable.scss'as * ;
+@use '../../../../scss/mixin.scss' as *;
+header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background-color: $white;
+  box-shadow: 0px 1px 10px 5px #0000000f,0px 1px 10px 5px #cccccc34;
+  z-index: 199999999999;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      margin: 0px;
+      padding: 0px;
+      span {
+        letter-spacing: -2px;
+        font-size:35px ;
+        &:first-of-type {
+          color: $blue2;
+          font-weight: 300;
+        }
+        &:last-of-type {
+          color: $blue1;
+          font-weight:400 ;
+        }
+        @include breakpoint ("mobile") {
+          font-size: 23px;
+        }
+      }
+    }
+    .search {
+      position: relative;
+      width: 45%;
+      margin: 0px 10px;
+      fa-icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: $blue2;
+      }
+      input[type="search"] {
+        outline: 0px;
+        border: 1px solid $blue1;
+        width: 100%;
+        padding: 5px 10px;
+        padding-left: 33px;
+        border-radius: 9px;
+        &::placeholder {
+          color: $blue2;
+        }
+      }
+      .Suggestions {
+        &.active {
+          position: absolute;
+          background-color: white;
+          border-radius: 6px;
+          width: 100%;
+          height: fit-content;
+          max-height: 400px;
+          overflow-y: scroll;
+          margin-top: 15px;
+          transition: 0.3s;
+          border: 0px;
+          &::-webkit-scrollbar {
+            width: 0px;
+          }
+          ul {
+            padding: 7px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            li {
+              list-style: none;
+              padding-top:18px;
+              display: flex;
+              align-items: flex-start;
+              &:not(:last-of-type) {
+                border-bottom: 1px solid $blue3;
+              }
+              figure {
+                width: 58px;
+                height: fit-content;
+                img {
+                  border: 0px;
+                  border-radius: 5px;
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              figcaption {
+                margin-left: 9px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                .info {
+                  h4 {
+                    margin: 0px;
+                    font-weight: 600;
+                    color: $blue1;
+                  }
+                  p {
+                    font-weight: 500;
+                    color: $blue2;
+                  }
+                }
+                button {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint ("mobile") {
+        display: none;
+      }
+    }
+    ul {
+      display: flex;
+      margin: 0px;
+      padding: 0px;
+      li {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0px 5px;
+        margin: 0px 10px;
+        @include breakpoint ("mobile") {
+          margin: 0px 4px;
+        }
+        &:nth-child(3) {
+          display: none;
+          @include breakpoint ("mobile") {
+            display: flex;
+          }
+        }
+        a {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          font-size: 15px;
+          padding: 10px 0px;
+          cursor: pointer;
+          fa-icon {
+            color: $blue2;
+            transition: 0.3s;
+          }
+          p {
+            color: $blue2;
+            margin: 0px;
+            transition: 0.3s;
+            @include breakpoint ("mobile") {
+              font-size: 10px;
+            }
+          }
+        }
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 1px solid $blue1;
+          @include breakpoint ("mobile") {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.active {
+  transition: 0.3s;
+  border-bottom: 1px solid $blue1;
+  a {
+    fa-icon {
+      color: $blue1 !important;
+    }
+    p {
+      color: $blue1 !important;
+    }
+  }
+}

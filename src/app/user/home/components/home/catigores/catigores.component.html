@@ -1,0 +1,90 @@
+<div class="container">
+  <!-- popular section -->
+  <section class="popular">
+    <h1>Popular Books</h1>
+    <swiper-container class="mySwiper" slides-per-view= auto
+    space-between="30" free-mode="true">
+      <swiper-slide *ngFor="let Book of Books">
+        <figure>
+          <img src="{{Book.img}}" alt="">
+          <div class="fav">
+            <fa-icon [icon]="faHeart" [ngClass]="{active:Book.fav === true}"></fa-icon>
+          </div>
+        </figure>
+        <figcaption>
+          <h3>{{Book.n}}</h3>
+          <p>{{Book.auth}}</p>
+          <button type="button" class="btn btn-primary" [routerLink]="['../','Book',Book.i,'detail']">See More</button>
+        </figcaption>
+      </swiper-slide>
+    </swiper-container>
+  </section>
+</div>
+<!-- trending Section -->
+<section class="trending">
+  <div class="container">
+    <h1>Trending this week</h1>
+    <div class="con">
+      <swiper-container class="mySwiper" effect="cards" grab-cursor="true" navigation="true" pagination="true">
+        <swiper-slide *ngFor="let Book of Books">
+          <figure>
+            <img [src]="Book.img" alt="{{Book.n}}">
+            <div class="fav">
+              <fa-icon [icon]="faHeart" [ngClass]="{active: Book.fav === true}"></fa-icon>
+            </div>
+          </figure>
+          <figcaption>
+            <h1>{{Book.n}}</h1>
+            <h2>{{Book.auth}}</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quisquam eum quidem nemo ullam voluptas cumque provident architecto! Fuga consequatur modi illum facere ea praesentium alias!
+              Necessitatibus sequi at libero adipisci?
+            </p>
+            <div class="btns">
+              <p>
+                <span>Read more</span>
+                <fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon>
+              </p>
+              <p>
+                <fa-icon [icon]="faEye"></fa-icon>
+                <span>Preview Book</span>
+              </p>
+            </div>
+          </figcaption>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+  </div>
+</section>
+<!-- categories Section -->
+<section class="categories">
+  <div class="container">
+    <header>
+      <h1>Categories</h1>
+      <select class="form-select form-select-lg sm" aria-label="Large select example" #select  (change)="catigoryT(select.value)">
+        <option *ngFor="let categore of Catigores">{{categore}}</option>
+      </select>
+    </header>
+    <div class="row">
+      <div class="col-md-2" *ngFor="let Book of filterBook | paginate: { itemsPerPage: itemsperpage, currentPage: p }">
+        <div class="card">
+          <figure>
+            <img src="{{Book.img}}" alt="">
+            <div class="fav">
+              <fa-icon [icon]="faHeart" [ngClass]="{active:Book.fav === true}"></fa-icon>
+            </div>
+          </figure>
+          <figcaption>
+            <h3>{{Book.n}}</h3>
+            <p>{{Book.auth}}</p>
+            <button type="button" class="btn btn-primary" [routerLink]="['../','Book',Book.i,'detail']">See More</button>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</section>

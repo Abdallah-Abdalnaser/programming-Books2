@@ -1,0 +1,37 @@
+<div class="container">
+  <caption>
+    <img src={{bookInfo.img}} alt="">
+    <h1>{{bookInfo.n}}</h1>
+    <button>Read Now <fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon></button>
+  </caption>
+  <figcaption>
+    <div class="bookname">
+      <h2>{{bookInfo.n}}</h2>
+      <p>Author: <span>{{bookInfo.auth}}</span></p>
+      <p>published Date: <span>septemper26,2023</span></p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        A deleniti nobis iure quae provident exercitationem incidunt praesentium consectetur fugit accusamus,
+        dolore culpa quas numquam dolorem impedit sunt maiores officia vel.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        A deleniti nobis iure quae provident exercitationem incidunt praesentium consectetur fugit accusamus,
+        dolore culpa quas numquam dolorem impedit sunt maiores officia vel.
+      </p>
+    </div>
+    <div class="more">
+      <p>Read More</p>
+      <fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon>
+    </div>
+  </figcaption>
+</div>
+<div class="info">
+  <app-info></app-info>
+</div>
+<div class="container data">
+  <router-outlet></router-outlet>
+</div>
+<div class="recommend">
+  <div class="container">
+    <app-recommend></app-recommend>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Schedule Reading</h1>
+</div>
+<h2>Schedule a time for reading</h2>
+<div class="schedule">
+  <div class="starttoendone">
+    <div class="start">
+      <p-calendar
+        [(ngModel)]="startDate"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        inputId="buttondisplay" />
+      </div>
+      <span>To</span>
+      <div class="end">
+        <p-calendar
+        [(ngModel)]="endDate"
+        [showIcon]="true"
+        [showOnFocus]="false"
+        inputId="buttondisplay" />
+      </div>
+  </div>
+  <div class="starttoendtwo">
+    <div class="start">
+      <p-calendar
+      class="max-w-full"
+      [(ngModel)]="startDate"
+      [inline]="true"
+      [showWeek]="true" />
+      </div>
+      <div class="end">
+        <p-calendar
+        class="max-w-full"
+        [(ngModel)]="endDate"
+        [inline]="true"
+        [showWeek]="true" />
+      </div>
+  </div>
+</div>

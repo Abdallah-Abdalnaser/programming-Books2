@@ -1,0 +1,49 @@
+<header>
+  <div class="container">
+    <h1>
+      <span>Cs</span>
+      <span>reads</span>
+    </h1>
+    <div class="search">
+      <fa-icon [icon]="faSearch"></fa-icon>
+      <input type="search" placeholder="search book name , auther,...." (input)="search($event)" #input>
+      <div class="Suggestions active" [ngStyle]="{'display':hidden()}">
+        <ul>
+          <li *ngFor="let suggestionBook of suggestionsBook">
+            <figure>
+              <img src={{suggestionBook.img}}>
+            </figure>
+            <figcaption>
+              <div class="info">
+                <h4>{{suggestionBook.n}}</h4>
+                <p>{{suggestionBook.auth}}</p>
+              </div>
+              <button type="button" class="btn btn-primary" [routerLink]="['Book',suggestionBook.i,'detail']" (click)="close()">See More</button>
+            </figcaption>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <ul>
+      <li class="active" [routerLink]="['./home']" routerLinkActive="active">
+        <a>
+          <fa-icon [icon]="faHome"></fa-icon>
+          <p>Home</p>
+        </a>
+      </li>
+      <li [routerLink]="['./myBook']" routerLinkActive="active">
+        <a>
+          <fa-icon [icon]="faBook"></fa-icon>
+          <p>My Books</p>
+        </a>
+      </li>
+      <li>
+        <a>
+          <fa-icon [icon]="faSearch"></fa-icon>
+          <p>Search</p>
+        </a>
+      </li>
+      <li><img src="../../../../../assets/imgs/WhatsApp Image 2024-04-05 at 21.42.20_534be846.jpg" alt="prof-img"></li>
+    </ul>
+  </div>
+</header>

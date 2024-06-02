@@ -1,0 +1,57 @@
+@use '../../../../../scss/mixin.scss' as * ;
+@use '../../../../../scss/variable.scss' as * ;
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    border-bottom: 2px solid $blue1;
+    width: fit-content;
+    padding-bottom: 10px;
+    color: $blue1;
+  }
+}
+
+h2 {
+  color: $blue1;
+  border-bottom: 2px solid $blue1;
+  width: fit-content;
+  padding: 12px 0px;
+  margin-bottom: 35px;
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  .starttoendone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 18px;
+    span {
+      margin: 0px 20px;
+    }
+  }
+  .starttoendtwo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    .start {
+      margin: 15px 0px;
+      margin-right: 18px;
+    }
+    .end {
+      margin: 15px 0px;
+    }
+    span {
+      margin: 0px 20px;
+    }
+  }
+}
+

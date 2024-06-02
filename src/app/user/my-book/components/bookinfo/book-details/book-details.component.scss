@@ -1,0 +1,93 @@
+@use '../../../../../scss/mixin.scss' as * ;
+@use '../../../../../scss/variable.scss' as * ;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    border-bottom: 2px solid $blue1;
+    width: fit-content;
+    padding-bottom: 10px;
+    color: $blue1;
+  }
+}
+h2 {
+  color: $blue1;
+}
+
+.AboutAuthor {
+  position: relative;
+  display: flex;
+  padding: 18px 0px;
+  @include breakpoint("mobile") {
+    flex-direction: column;
+  }
+  figure {
+    flex: 1;
+    img {
+      width: 100%;
+      height: 300px;
+    }
+  }
+  figcaption {
+    flex: 4;
+    margin-left: 25px;
+    @include breakpoint("mobile") {
+      margin-left: 0px;
+    }
+    p {
+      color: $blue2;
+      line-height: 2;
+      span {
+        color: $blue1;
+        cursor: pointer;
+        font: {
+          size: 18px;
+          weight: 500
+        }
+        fa-icon {
+          color: $blue1;
+          cursor: pointer;
+          font: {
+            size: 18px;
+            weight: 500
+          }
+        }
+      }
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background-color: $blue1;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.AboutBook {
+  margin-top: 35px;
+  h2 {
+    margin: 0px;
+  }
+  p {
+    color: $blue2;
+  }
+  table {
+    width: 100%;
+    color: $blue2;
+    tr {
+      td {
+        padding: 10px 0px;
+        &:first-of-type {
+          color: $blue1;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

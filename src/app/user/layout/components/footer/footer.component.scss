@@ -1,0 +1,174 @@
+@use '../../../../scss/variable.scss' as * ;
+@use '../../../../scss/mixin.scss' as *;
+
+footer {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0px;
+  background-color: #153450;
+  .container {
+    .contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      h1 {
+        display: flex;
+        margin: 0px;
+        padding: 0px;
+        z-index: 100;
+        span {
+          letter-spacing: -2px;
+          font-size:35px ;
+          &:first-of-type {
+            color: #f6f6f6d5;
+            font-weight:100;
+          }
+          &:last-of-type {
+            color: $white;
+            font-weight:400 ;
+          }
+          @include breakpoint ("mobile") {
+            font-size: 15px;
+          }
+        }
+      }
+      ul {
+        display: flex;
+        margin: 0px;
+        padding: 0px;
+        li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          list-style: none;
+          margin: 0px 20px;
+          @include breakpoint("mobile") {
+            margin: 0px 8px;
+          }
+          .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background-color: $blue3;
+            color: $white;
+            border-radius: 50%;
+            margin-right: 8px;
+            @include breakpoint("small") {
+              width: 25px;
+              height: 25px;
+            }
+            @include breakpoint("mobile") {
+              width: 18px;
+              height: 18px;
+            }
+            fa-icon {
+              color: #153450;
+              @include breakpoint("small") {
+                font-size: 12px;
+              }
+              @include breakpoint("mobile") {
+                font-size: 9px;
+              }
+            }
+          }
+          p {
+            margin: 0px;
+            color: $white;
+            @include breakpoint("small") {
+              font-size: 10px;
+            }
+            @include breakpoint("mobile") {
+              font-size: 7px;
+            }
+          }
+          img {
+            margin:  0px 10px;
+            @include breakpoint("mobile") {
+              width: 17px;
+              margin:  0px 4px;
+            }
+          }
+        }
+      }
+    }
+    .links {
+      display: flex;
+      margin-top: 30px;
+      z-index: 100;
+      ul {
+        z-index: 100;
+        margin-right: 30px;
+        @include breakpoint("mobile") {
+          padding-left: 15px;
+          margin-right: 15px;
+        }
+        li {
+          list-style: none;
+          h1 {
+            margin: 0px;
+            color: $white;
+            font-weight: 400;
+            @include breakpoint("mobile") {
+              font-size: 10px;
+            }
+          }
+          a {
+            display: block;
+            text-decoration: none;
+            margin: 15px 0px;
+            font-weight: 100;
+            color: #f6f6f6be;
+            cursor: pointer;
+            transition: 0.3s;
+            &:hover {
+              color: $white;
+              font-weight: 500;
+            }
+            @include breakpoint("mobile") {
+              font-size: 6px;
+              margin: 8px 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &::before , &::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+    border: 3px solid $white;
+    z-index: 1;
+  }
+  &::before {
+    border-radius: 50%;
+    top: -60%;
+    left: -10%;
+    @include breakpoint("small") {
+      top: -76%;
+      left: -15%;
+    }
+    @include breakpoint("mobile") {
+      top: -148%;
+      left: -88%;
+    }
+  }
+  &::after {
+    border-radius:52% 48% 39% 61% / 100% 57% 43% 0% ;
+    bottom: -60%;
+    right: -15%;
+    @include breakpoint("small") {
+      bottom: -76%;
+      right: -15%;
+    }
+    @include breakpoint("mobile") {
+      bottom: -164%;
+      right: -70%;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@use '../../../../../scss/variable.scss' as *;
+@use '../../../../../scss/mixin.scss' as *;
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $blue3
+}
+
+nav {
+  @extend %flex;
+  margin-bottom: 15px;
+  .detail {
+    @extend %flex;
+    flex-direction: column;
+    color: $blue1;
+    opacity: 0.5;
+    margin: 0px 50px;
+    transition: 0.3s;
+    padding: 15px 0px;
+    cursor: pointer;
+    @include breakpoint("mobile") {
+      margin: 0px 10px;
+    }
+    &.active {
+      opacity: 1;
+      border-bottom: 1px solid $blue1;
+    }
+    fa-icon {
+      font-size:20px;
+      margin-bottom: 15px;
+      @include breakpoint("mobile") {
+        font-size:14px;
+      }
+    }
+    p {
+      margin: 0px;
+      @include breakpoint("mobile") {
+        font-size:12px;
+      }
+    }
+  }
+  .Schedule {
+    @extend %flex;
+    flex-direction: column;
+    color: $blue1;
+    opacity: 0.5;
+    transition: 0.3s;
+    margin: 0px 50px;
+    padding: 15px 0px ;
+    cursor: pointer;
+    @include breakpoint("mobile") {
+      margin: 0px 10px;
+    }
+    &.active {
+      opacity: 1;
+      border-bottom: 1px solid $blue1;
+    }
+    fa-icon {
+      font-size:20px;
+      margin-bottom: 15px;
+      @include breakpoint("mobile") {
+        font-size:14px;
+      }
+    }
+    p {
+      margin: 0px;
+      @include breakpoint("mobile") {
+        font-size:12px;
+      }
+    }
+  }
+}

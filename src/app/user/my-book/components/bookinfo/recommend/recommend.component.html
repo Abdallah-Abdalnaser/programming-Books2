@@ -1,0 +1,19 @@
+<section class="popular">
+  <h1>Recommend</h1>
+  <swiper-container class="mySwiper" slides-per-view= auto
+  space-between="30" free-mode="true">
+    <swiper-slide *ngFor="let Book of Books">
+      <figure>
+        <img src="{{Book.img}}" alt="">
+        <div class="fav">
+          <fa-icon [icon]="faHeart" [ngClass]="{active:Book.fav === true}"></fa-icon>
+        </div>
+      </figure>
+      <figcaption>
+        <h3>{{Book.n}}</h3>
+        <p>{{Book.auth}}</p>
+        <button type="button" class="btn btn-primary" [routerLink]="['home',Book.i,'detail']">See More</button>
+      </figcaption>
+    </swiper-slide>
+  </swiper-container>
+</section>

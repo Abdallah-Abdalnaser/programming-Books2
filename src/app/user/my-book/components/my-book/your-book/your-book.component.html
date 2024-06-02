@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="slider">
+    <ul>
+      <li >
+        <a>Read</a>
+      </li>
+      <li >
+        <a>Currently Reading</a>
+      </li>
+      <li class="active">
+        <a>To read</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="booklist">
+  <div class="head">
+    <div class="container">
+      <ul>
+        <li></li>
+        <li>TITLE&AUTHOR</li>
+        <li>ADD DATE</li>
+        <li>READ DATE</li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" *ngFor="let fav of favBook | paginate: { itemsPerPage: itemsperpage, currentPage: p }">
+    <div class="container">
+      <div class="image">
+        <figure>
+          <img src="{{fav.img}}" alt="">
+          <div class="fav">
+            <fa-icon [icon]="faHeart" [ngClass]="{active:fav.fav === true}"></fa-icon>
+          </div>
+        </figure>
+      </div>
+      <div class="title">
+        <h1>{{fav.n}}</h1>
+        <p>{{fav.auth}}</p>
+      </div>
+      <div class="ad">{{fav.AD}}</div>
+      <div class="rd">{{fav.RD}}</div>
+      <div class="btn">
+        <button type="button" class="btn btn-primary">See More</button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 py-5 d-flex justify-content-center align-items-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
