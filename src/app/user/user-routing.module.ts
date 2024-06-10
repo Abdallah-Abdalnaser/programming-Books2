@@ -16,8 +16,7 @@ const routes: Routes = [
       {path:'Schedule',component:ScheduleReadingComponent}
     ]},
   ]},
-  {path:"",redirectTo:"user/home",pathMatch:"full"},
-  {path:"**",redirectTo:"user/home"},
+  // {path:"",redirectTo:"user/home",pathMatch:"full"},
 ];
 
 @NgModule({

@@ -32,7 +32,7 @@ register();
     UserRoutingModule,
     CalendarModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

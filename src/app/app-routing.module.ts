@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { AuthComponent } from './auth/auth.component';
-import { AdminModule } from './admin/admin.module';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path:'user',component:UserComponent},
   {path:'auth',component:AuthComponent},
-  {path:'admin',component:AdminModule},
+  {path:'admin',component:AdminComponent},
+  // {path:"**",redirectTo:"admin"},
 ];
 
 @NgModule({
