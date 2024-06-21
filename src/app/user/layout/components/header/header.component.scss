@@ -6,7 +6,7 @@ header {
   top: 0px;
   background-color: $white;
   box-shadow: 0px 1px 10px 5px #0000000f,0px 1px 10px 5px #cccccc34;
-  z-index: 199999999999;
+  z-index: 99999999;
   .container {
     display: flex;
     justify-content: space-between;
@@ -101,10 +101,13 @@ header {
                     margin: 0px;
                     font-weight: 600;
                     color: $blue1;
+                    font-size: 18px;
                   }
                   p {
                     font-weight: 500;
                     color: $blue2;
+                    font-size: 13px;
+                    margin-top: 7px;
                   }
                 }
                 button {
@@ -129,6 +132,74 @@ header {
         list-style: none;
         padding: 0px 5px;
         margin: 0px 10px;
+        &:last-of-type {
+          position: relative;
+          cursor: pointer;
+          .userinfo {
+            display: none;
+            position: absolute;
+            top: 80px;
+            right: -3px;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            box-shadow: 0px 1px 10px 5px #0000000f,0px 1px 10px 5px #cccccc34;
+            &.active {
+              display:block;
+            }
+            &:before {
+              content: "";
+              position: absolute;
+              top: -27px;
+              right: 16px;
+              border-style: solid;
+              border-width: 15px;
+              border-color: transparent transparent white transparent;
+            }
+            .data {
+              display: flex;
+              border-bottom: 1px solid #eee ;
+              figure {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $blue1;
+                border-radius: 50%;
+                box-shadow: 0px 1px 10px 5px #0000000f,0px 1px 10px 5px #cccccc34;
+                color: white;
+                width: 40px;
+                height: 40px;
+              }
+              figcaption {
+                p {
+                  margin: 0px;
+                  margin-left: 5px;
+                  font: {
+                    size: 13px;
+                    weight:bolder
+                  }
+                }
+              }
+            }
+            .logout {
+              display: flex;
+              align-items: center;
+              margin: 10px 0px;
+              cursor: pointer;
+              fa-icon {
+                color: $blue1;
+                font-size: 20px;
+                margin-right: 5px;
+              }
+              span {
+                font: {
+                  size:14px;
+                  weight:500;
+                }
+              }
+            }
+          }
+        }
         @include breakpoint ("mobile") {
           margin: 0px 4px;
         }

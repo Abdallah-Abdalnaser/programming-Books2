@@ -25,4 +25,8 @@ export class AuthService {
   register(data:user) {
     return this.http.post(`${this.apiLink}/Register`,data);
   }
+
+  getRole(token:any) {
+    return JSON.parse(atob(token.split('.')[1]))['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+  }
 }

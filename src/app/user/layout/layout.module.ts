@@ -4,7 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserRoutingModule } from '../user-routing.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { UserRoutingModule } from '../user-routing.module';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    UserRoutingModule
+    UserRoutingModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,

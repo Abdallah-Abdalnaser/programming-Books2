@@ -6,7 +6,7 @@ import { UserComponent } from './user.component';
 import { LayoutModule } from './layout/layout.module';
 import { MyBookModule } from './my-book/my-book.module';
 import { HomeModule } from './home/home.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { HomeModule } from './home/home.module';
     UserRoutingModule,
     LayoutModule,
     MyBookModule,
-    HomeModule
-  ]
+    HomeModule,
+    HttpClientModule
+  ],
 })
 export class UserModule { }

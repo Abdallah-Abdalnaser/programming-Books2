@@ -1,0 +1,22 @@
+<form action="" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <header>
+    <span (click)="closeform()">x</span>
+  </header>
+
+  <div class="form-group">
+    <label for="title" class="form-label">Page Number</label>
+    <input type="text" class="form-control" id="title"  ngModel required  name="pageNumber" #title="ngModel">
+    <p *ngIf="!title.value && title.touched">*Required Field</p>
+  </div>
+
+
+  <div class="form-group">
+    <label for="description" class="form-label">Note</label>
+    <textarea class="form-control" id="description" rows="5" ngModel name="noteContent" #description = "ngModel"></textarea>
+    <p *ngIf="!description.value && description.touched">*Required Field</p>
+  </div>
+  <br>
+  <div class="create">
+    <button type="submit" [disabled]="!form.valid" [ngClass]="{vaild: form.valid}">Add Note</button>
+  </div>
+</form>

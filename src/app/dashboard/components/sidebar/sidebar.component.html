@@ -1,0 +1,34 @@
+<div class="con">
+  <div [ngClass]="{overlay:showSideBar === true}"></div>
+</div>
+<nav [ngStyle]="{width:mainWidth}">
+  <!-- menu Button -->
+  <div class="menu" (click)="showSideBare()">
+    <fa-icon [icon] = "faBars"></fa-icon>
+    <span [ngClass]="{hidden:showSideBar === false}">Menu</span>
+  </div>
+  <!-- page -->
+  <ul>
+    <li [routerLink]="['/admin','users']" routerLinkActive="active">
+      <fa-icon [icon] = "faUserEdit"></fa-icon>
+      <span [ngClass]="{hidden:showSideBar === false}">Users</span>
+    </li>
+    <li [routerLink]="['/admin','statistic']" routerLinkActive="active">
+      <fa-icon [icon] = "faChartPie"></fa-icon>
+      <span [ngClass]="{hidden:showSideBar === false}">Statistics</span>
+    </li>
+    <li [routerLink]="['/admin','categories']" routerLinkActive="active">
+      <fa-icon [icon] = "faListUl"></fa-icon>
+      <span [ngClass]="{hidden:showSideBar === false}">categories</span>
+    </li>
+    <li [routerLink]="['/admin','Books']" routerLinkActive="active">
+      <fa-icon [icon] = "faBookAtlas"></fa-icon>
+      <span [ngClass]="{hidden:showSideBar === false}">Books</span>
+    </li>
+  </ul>
+  <!-- profile Button-->
+  <div class="Profile" (click)="logout()">
+    <fa-icon [icon] = "faSignOut"></fa-icon>
+    <span [ngClass]="{hidden:showSideBar === false}">Logout</span>
+  </div>
+</nav>

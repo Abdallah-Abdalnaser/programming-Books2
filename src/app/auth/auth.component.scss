@@ -1,3 +1,5 @@
+@use '../scss/mixin.scss' as *;
+
 .auth {
   position: relative;
   width: 100%;
@@ -18,11 +20,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 40%;
+    width: 45%;
     max-height:90%;
     overflow-y: scroll;
     border-radius: 10px;
     box-shadow: 0px 0px 27px rgb(0 0 0 / 47%);
+    @include breakpoint('medium') {
+      width: 60%;
+    }
+    @include breakpoint('samll') {
+      width: 80%;
+    }
+    @include breakpoint('mobile') {
+      width: 90%;
+    }
     &::-webkit-scrollbar {
       width: 0px;
     }

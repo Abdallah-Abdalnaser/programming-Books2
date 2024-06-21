@@ -1,0 +1,42 @@
+<div class="spinner" [ngClass]="{active: fetching === false}">
+  <img src="../../../../assets/imgs/book-review.gif" alt="">
+</div>
+<div class="container">
+  <div class="info">
+    <h1>User Management</h1>
+    <p>Control and manage users in an easier way</p>
+  </div>
+  <div class="data">
+    <div>
+      <fa-icon [icon]="faUserTie"></fa-icon>
+      <p>
+        Adminstrators
+      </p>
+      <span>{{Adminstrators}}</span>
+    </div>
+    <div>
+      <fa-icon [icon]="faUser"></fa-icon>
+      <p>
+        Users
+      </p>
+      <span>{{UsersNumber}}</span>
+    </div>
+    <div>
+      <fa-icon [icon]="faGear"></fa-icon>
+      <p>
+        Service
+      </p>
+      <span>{{Service}}</span>
+    </div>
+    <div>
+      <fa-icon [icon]="faFileCircleCheck"></fa-icon>
+      <p>
+        Overall
+      </p>
+      <span>{{Overall}}</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <app-userlist></app-userlist>
+</div>

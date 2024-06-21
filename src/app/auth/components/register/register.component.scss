@@ -22,14 +22,15 @@ form {
   }
   .name {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
+    padding: 0px 50px;
     > .form-group {
       padding: 0px 2px;
+      width: 100%;
     }
   }
   .form-group {
-    padding: 0px 100px;
+    padding: 0px 50px;
     margin-bottom: 4px;
     .passlabel {
       display: flex;

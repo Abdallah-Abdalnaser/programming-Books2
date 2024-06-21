@@ -6,15 +6,18 @@ import { BookinfoComponent } from './my-book/components/bookinfo/bookinfo.compon
 import { BookDetailsComponent } from './my-book/components/bookinfo/book-details/book-details.component';
 import { ScheduleReadingComponent } from './my-book/components/bookinfo/schedule-reading/schedule-reading.component';
 import { UserComponent } from './user.component';
+import { BookComponent } from './my-book/components/book/book.component';
+import { authCGuard } from './auth-c.guard';
 
 const routes: Routes = [
-  {path:'user',component:UserComponent,children:[
+  {path:'user',component:UserComponent,canActivateChild:[authCGuard],children:[
     {path:"home",component:HomeComponent},
     {path:"myBook",component:MyBookComponent},
     {path:"Book/:id",component:BookinfoComponent,children:[
       {path:'detail',component:BookDetailsComponent},
       {path:'Schedule',component:ScheduleReadingComponent}
     ]},
+    {path:"Bookpdf/:id",component:BookComponent},
   ]},
   // {path:"",redirectTo:"user/home",pathMatch:"full"},
 ];

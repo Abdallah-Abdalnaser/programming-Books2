@@ -149,7 +149,10 @@
           width: 100%;
         }
         button {
-          background-color: $blue2;
+          min-width: 120px;
+          &:first-of-type {
+            background-color: $blue2;
+          }
           @include breakpoint("mobile") {
             margin-bottom: 18px;
             width: 82%;

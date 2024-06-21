@@ -1,14 +1,14 @@
 <div class="container">
   <div class="slider">
     <ul>
-      <li >
-        <a>Read</a>
+      <li class="" [ngClass]="{active: favourit === true}" (click)="getToFavourite()" >
+        <a>Favourite</a>
       </li>
-      <li >
-        <a>Currently Reading</a>
-      </li>
-      <li class="active">
+      <li class="" [ngClass]="{active: Toread === true}" (click)="getToReadInFeature()">
         <a>To read</a>
+      </li>
+      <li class="" [ngClass]="{active: CurrentlyReading === true}" (click)="getCurrentlyReadLIst()">
+        <a>Currently Reading</a>
       </li>
     </ul>
   </div>
@@ -29,20 +29,21 @@
     <div class="container">
       <div class="image">
         <figure>
-          <img src="{{fav.img}}" alt="">
+          <img src="http://zeyad200.runasp.net/{{fav.imageUrl}}" alt="">
           <div class="fav">
             <fa-icon [icon]="faHeart" [ngClass]="{active:fav.fav === true}"></fa-icon>
           </div>
         </figure>
       </div>
       <div class="title">
-        <h1>{{fav.n}}</h1>
-        <p>{{fav.auth}}</p>
+        <h1>{{fav.title}}</h1>
+        <p>{{fav.author}}</p>
       </div>
-      <div class="ad">{{fav.AD}}</div>
-      <div class="rd">{{fav.RD}}</div>
-      <div class="btn">
-        <button type="button" class="btn btn-primary">See More</button>
+      <div class="ad">March 25 ,2024</div>
+      <div class="rd">March 25 ,2024</div>
+      <div class="btn d-flex flex-column">
+        <button type="button" class="my-1 btn btn-primary" routerLink="/user/Book/{{fav.id}}/detail">See More</button>
+        <button type="button" class="my-1 btn btn-danger" (click)="delete(fav.id)">Delete</button>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../book.model';
 import { HomeService } from '../../../service/home.service';
 import { faHeart, IconDefinition ,faArrowUpRightFromSquare, faEye} from '@fortawesome/free-solid-svg-icons';
+import { log } from 'console';
 
 
 @Component({
@@ -16,19 +17,53 @@ export class CatigoresComponent implements OnInit {
   p:number=1;
   itemsperpage:number=8;
   totalProduct!:number;
-  Books:Book[]=[];
-  filterBook:Book[]=[];
-  Catigores:string[]=[];
+  Books:any[]=[];
+  filterBook:any[]=[];
+  Catigores:{id:number,name:string}[]=[];
+  fetching:boolean=true;
   constructor(private HomeService:HomeService){};
   ngOnInit(): void {
-    this.Books = this.HomeService.getbooks
-    this.filterBook = this.HomeService.getbooks
+    this.HomeService.getAllBook().subscribe(
+      (data:any) => {
+        this.Books = data.data;
+        this.HomeService.popularFetch.next(true);
+      }
+    )
+    this.HomeService.getAllBook().subscribe(
+      (data:any) => {
+        this.filterBook = data.data;
+        this.HomeService.popularFetch.next(true);
+      }
+    )
     this.totalProduct = this.Books.length;
-    this.Catigores = this.HomeService.Catigories;
-    this.HomeService.getBookByCatigory("oop")
+    this.HomeService.getCatigory().subscribe(
+      (data) => {
+        this.Catigores = [{id:1,name:"All"},...data.data];
+        this.HomeService.popularFetch.next(true);
+      }
+    );
+    // this.HomeService.getBookByCatigory("oop")
   }
 
   catigoryT(type:string) {
-    this.filterBook = this.HomeService.getBookByCatigory(type);
+    this.fetching = false;
+    // this.HomeService.categoriesFetch.next(false);
+    if (Number(type) === 1) {
+      this.HomeService.getAllBook().subscribe(
+        (data:any) => {
+          this.filterBook = data.data;
+          // this.HomeService.categoriesFetch.next(true);
+          this.fetching = true;
+        }
+      )
+    } else {
+      this.HomeService.getBookByCatigory(Number(type)).subscribe(
+        (data:any)=> {
+          this.filterBook = data.data;
+          this.fetching = true;
+          // this.HomeService.categoriesFetch.next(true);
+        }
+      )
+    }
   }
 }

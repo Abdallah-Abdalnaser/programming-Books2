@@ -1,0 +1,9 @@
+<div class="spinner" [ngClass]="{active: fetching === false}">
+  <img src="../../../../../assets/imgs/book-review.gif" alt="">
+</div>
+<div class="container">
+  <app-notes></app-notes>
+  <div class="con">
+    <iframe [src]="pdfSrc" frameborder="0"></iframe>
+  </div>
+</div>

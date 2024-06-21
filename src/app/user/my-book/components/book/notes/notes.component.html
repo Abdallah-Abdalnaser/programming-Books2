@@ -1,0 +1,42 @@
+<div class="con">
+<form  #form="ngForm">
+  <h4>Chat Bot</h4>
+  <div class="noteBox">
+    <div class="spinner" [ngClass]="{active: fetching === false}">
+      <img src="../../../../assets/imgs/book-review.gif" alt="">
+    </div>
+    <div class="note" [ngClass]="{hidden: Summarize ===''}">
+      <p>hello</p>
+    </div>
+    <div class="notes" [ngClass]="{hidden:showNotes ===false}" *ngFor="let note of notes">
+      <header>
+        <span (click)="deleteNote(note.id)">x</span>
+      </header>
+      <p>Page: {{note.pageNumber}}</p>
+      <p>{{note.noteContent}}</p>
+    </div>
+    <span (click)="open()" [ngClass]="{hidden:showNotes === false}">+</span>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Enter Your Text !" aria-describedby="emailHelp" ngModel name="text" required email #text>
+    <button type="button" class="choose" (click)="show = !show">
+      <fa-icon [icon]="faPaperPlane"></fa-icon>
+    </button>
+    <button type="submit" class="summarize" [ngClass]="{show: show===true , hidden: show === false}" (click)="submit(form)" (click)="show = !show">
+      <fa-icon [icon]="faFileAlt"></fa-icon>
+    </button>
+    <button type="submit" class="qa" [ngClass]="{show: show===true , hidden: show === false}" (click)="submitQ(form)" (click)="show = !show">
+      <fa-icon [icon]="faQuestionCircle"></fa-icon>
+    </button>
+    <button type="submit" class="language" [ngClass]="{show: show===true , hidden: show === false}" (click)="submitL(form)" (click)="show = !show">
+      <fa-icon [icon]="faLanguage"></fa-icon>
+    </button>
+    <button type="submit" class="Gpt" [ngClass]="{show: show===true , hidden: show === false}" (click)="submitG(form)" (click)="show = !show">
+      <fa-icon [icon]="faRobot"></fa-icon>
+    </button>
+    <button type="submit" class="note" [ngClass]="{show: show===true , hidden: show === false}" (click)="shownotes()" (click)="show = !show">
+      <fa-icon [icon]="faStickyNote"></fa-icon>
+    </button>
+  </div>
+</form>
+</div>

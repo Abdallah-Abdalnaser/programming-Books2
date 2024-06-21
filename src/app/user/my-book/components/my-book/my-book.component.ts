@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,6 +6,10 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './my-book.component.html',
   styleUrl: './my-book.component.scss'
 })
-export class MyBookComponent {
+export class MyBookComponent implements OnInit {
   faArrowLeft=faArrowLeft;
+
+  ngOnInit(): void {
+    // window.scrollTo(0,0);
+  }
 }

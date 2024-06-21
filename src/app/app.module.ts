@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { AdminModule } from './admin/admin.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { UserTokenInterceptor } from './services/user.interceptor';  // Correct import
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     UserModule,
     AuthModule,
-    AdminModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    DashboardModule
   ],
   providers: [
-    provideClientHydration()
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserTokenInterceptor,
+      multi: true
+    },
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

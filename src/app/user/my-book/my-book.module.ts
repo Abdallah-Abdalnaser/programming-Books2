@@ -13,6 +13,10 @@ import { UserRoutingModule } from '../user-routing.module';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { BookComponent } from './components/book/book.component';
+import { NotesComponent } from './components/book/notes/notes.component';
+import { NoteformComponent } from './components/book/noteform/noteform.component';
 register();
 
 
@@ -25,6 +29,9 @@ register();
     RecommendComponent,
     ScheduleReadingComponent,
     YourBookComponent,
+    BookComponent,
+    NotesComponent,
+    NoteformComponent,
   ],
   imports: [
     CommonModule,
@@ -33,9 +40,13 @@ register();
     CalendarModule,
     FormsModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
+  ],
+  exports:[
+    NoteformComponent
   ]
 })
 export class MyBookModule { }

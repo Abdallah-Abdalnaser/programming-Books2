@@ -1,0 +1,29 @@
+<div class="userdata">
+  <table class="table">
+    <thead>
+      <tr>
+        <td></td>
+        <td>Image</td>
+        <td>Name</td>
+        <td>Catigory</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Book of Books; let i =index">
+        <td>{{i+1}}</td>
+        <td>
+          <figure>
+            <img src="http://zeyad200.runasp.net/{{Book.imageUrl}}" alt="">
+          </figure>
+        </td>
+        <td>{{Book.title}}</td>
+        <td>{{ categoryMap.get(Book.categoryId) | async }}</td>
+        <td>
+          <button type="button" class="btn btn-warning" (click)="open()">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

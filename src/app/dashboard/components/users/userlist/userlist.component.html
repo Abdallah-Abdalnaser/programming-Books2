@@ -1,0 +1,30 @@
+<h1>Users List</h1>
+<div class="userdata">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>USERS</td>
+        <td>Address</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | paginate: { itemsPerPage: itemsperpage, currentPage: p }">
+        <td class="email">
+          <span>{{user.firstName[0]}}{{user.lastName[0]}}</span>
+          <div class="emailinfo">
+            <h6>{{user.firstName}}{{user.lastName}}</h6>
+            <span>{{user.email}}</span>
+          </div>
+        </td>
+        <td>{{user.address}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-5 d-flex justify-content-center align-items-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

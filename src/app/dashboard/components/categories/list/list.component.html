@@ -1,0 +1,21 @@
+<div class="userdata">
+  <table class="table">
+    <thead>
+      <tr>
+        <td></td>
+        <td>Name</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let catigory of catigories; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{catigory.name}}</td>
+        <td>
+          <button type="button" class="btn btn-warning" (click)="update(catigory)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="Delete(catigory.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

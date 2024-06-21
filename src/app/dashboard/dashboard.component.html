@@ -1,0 +1,13 @@
+<section [ngClass]="{close: close === true , open: close === false}">
+  <div class="form">
+    <app-bookform></app-bookform>
+  </div>
+</section>
+<div class="main">
+  <div>
+    <app-sidebar></app-sidebar>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

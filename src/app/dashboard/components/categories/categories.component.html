@@ -1,0 +1,19 @@
+<div class="spinner" [ngClass]="{active: fetching === false}">
+  <img src="../../../../assets/imgs/book-review.gif" alt="">
+</div>
+
+<div class="container">
+  <div class="info">
+    <h1>Add Categories</h1>
+    <p>You Can Add Categories From Here ..!</p>
+  </div>
+  <form action="" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="form-group">
+      <input type="text" class="form-control"  ngModel name="name" required  #catigory="ngModel" placeholder="Add Category !">
+      <button type="submit" [disabled]="!form.valid" [ngClass]="{vaild: form.valid}">{{update === false?'Add Category':'UpdateCategory'}}</button>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <app-list></app-list>
+</div>

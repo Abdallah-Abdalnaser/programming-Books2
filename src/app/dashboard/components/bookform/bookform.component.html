@@ -1,0 +1,51 @@
+<form action="" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <header>
+    <span (click)="closeform()">x</span>
+  </header>
+  <div class="Book">
+    <figure>
+      <img [src]="imageSrc" alt="">
+      <label for="imageUrl">
+        Upload Image
+        <input type="file" id="imageUrl" (change)="onImageChange($event)" ngModel required name="imagefile" #imageUrl="ngModel">
+      </label>
+    </figure>
+    <figcaption>
+      <label for="category">Select a Book Category</label>
+      <select class="form-select form-select-lg sm" aria-label="Large select example" id="category" #select name="CategoryId" ngModel>
+        <option value={{category.id}} *ngFor="let category of categories" >{{category.name}}</option>
+      </select>
+      <div class="form-group">
+        <label for="publishTime" class="form-label">Publish Time</label>
+        <input type="date" class="form-control" id="publishTime"  ngModel  name="PublishTime" #publishTime="ngModel">
+        <p *ngIf="!publishTime.value && publishTime.touched">*Required Field</p>
+      </div>
+      <div class="form-group">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="author"  ngModel required  name="Author" #author="ngModel">
+        <p *ngIf="!author.value && author.touched">*Required Field</p>
+      </div>
+    </figcaption>
+  </div>
+
+  <div class="form-group">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title"  ngModel required  name="Title" #title="ngModel">
+    <p *ngIf="!title.value && title.touched">*Required Field</p>
+  </div>
+
+  <div class="form-group">
+    <label for="formFile" class="form-label">Upload Book</label>
+    <input class="form-control" type="file" id="formFile" name="bookfile" ngModel>
+  </div>
+
+  <div class="form-group">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" rows="5" ngModel name="Description" #description = "ngModel"></textarea>
+    <p *ngIf="!description.value && description.touched">*Required Field</p>
+  </div>
+  <br>
+  <div class="create">
+    <button type="submit" [disabled]="!form.valid" [ngClass]="{vaild: form.valid}">Add Book</button>
+  </div>
+</form>

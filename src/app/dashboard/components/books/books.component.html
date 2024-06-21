@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="info">
+    <h1>All Books</h1>
+    <p>From Here You Can Manage Your Books</p>
+  </div>
+  <button type="submit" (click)="open()">Add Book</button>
+</div>
+<div class="container">
+  <app-list-book></app-list-book>
+</div>
+
+<div class="spinner" [ngClass]="{active: fetching === false}">
+  <img src="../../../../assets/imgs/book-review.gif" alt="">
+</div>
