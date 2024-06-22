@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { faPlus, IconDefinition , faPaperPlane , faFileAlt , faQuestionCircle , faLanguage , faStickyNote , faRobot} from '@fortawesome/free-solid-svg-icons';
 import { MybooksService } from '../../../services/mybooks.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-notes',
@@ -24,7 +25,7 @@ export class NotesComponent implements OnInit{
   notes:any[]=[];
   Bookid:string='';
   showNotes:boolean = false;
-  constructor(private MybooksService:MybooksService ,private router:ActivatedRoute) {}
+  constructor(private MybooksService:MybooksService ,private router:ActivatedRoute , private UserService:UserService) {}
 
   ngOnInit(): void {
     this.MybooksService.refresh.subscribe(
@@ -34,7 +35,7 @@ export class NotesComponent implements OnInit{
         }
       }
     )
-    // this.MybooksService.refresh.next(false);
+    this.MybooksService.refresh.next(false);
     this.router.params.subscribe(
       (data)=> {
         this.Bookid = data['id']
@@ -96,6 +97,7 @@ export class NotesComponent implements OnInit{
   }
 
   shownotes() {
+    this.Summarize ='';
     this.showNotes = !this.showNotes;
     this.fetching = false
     this.MybooksService.showNotes(Number(this.Bookid)).subscribe(
@@ -108,11 +110,13 @@ export class NotesComponent implements OnInit{
 
   deleteNote(id:number) {
     this.MybooksService.deleteNotes(id,Number(this.Bookid)).subscribe(
-      (data)=> {
+      (data:any)=> {
         this.shownotes();
-        console.log(data);
+        this.UserService.Delete.next(true);
+        this.UserService.message.next(data.data)
       }
     )
+    this.UserService.Delete.next(false);
   }
 
   open() {

@@ -6,13 +6,13 @@
       <img src="../../../../assets/imgs/book-review.gif" alt="">
     </div>
     <div class="note" [ngClass]="{hidden: Summarize ===''}">
-      <p>hello</p>
+      <p>{{Summarize}}</p>
     </div>
     <div class="notes" [ngClass]="{hidden:showNotes ===false}" *ngFor="let note of notes">
       <header>
+        <p>Page: {{note.pageNumber}}</p>
         <span (click)="deleteNote(note.id)">x</span>
       </header>
-      <p>Page: {{note.pageNumber}}</p>
       <p>{{note.noteContent}}</p>
     </div>
     <span (click)="open()" [ngClass]="{hidden:showNotes === false}">+</span>

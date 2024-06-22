@@ -33,9 +33,12 @@ export class ListComponent implements OnInit {
     this.DashboardService.DeleteCatigory(id).subscribe(
       (data:any)=> {
         this.message = data.message;
+        this.DashboardService.Delete.next(true);
+        this.DashboardService.message.next(data.data)
         this.showCatiegory();
       }
     )
+    this.DashboardService.Delete.next(false);
   }
 
   showCatiegory() {

@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild("input") input!:ElementRef;
-  suggestionsBook:Book[] = [];
+  suggestionsBook:any[] = [];
   faSearch:IconDefinition=faSearch;
   faHome:IconDefinition=faHome;
   faBook:IconDefinition=faBook;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../../home/book.model';
 import { MybooksService } from '../../../services/mybooks.service';
 import { faHeart, faL, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-your-book',
@@ -18,7 +19,7 @@ export class YourBookComponent implements OnInit {
   CurrentlyReading!:boolean;
   Toread!:boolean;
 
-  constructor(private MybooksService:MybooksService) {};
+  constructor(private MybooksService:MybooksService , private UserService:UserService) {};
 
   ngOnInit(): void {
     this.getToFavourite();
@@ -61,22 +62,31 @@ export class YourBookComponent implements OnInit {
   delete(id:any) {
     if (this.favourit === true) {
       this.MybooksService.deleteToFavourite(id).subscribe(
-        ()=>{
+        (data:any)=>{
+          this.UserService.Delete.next(true);
+          this.UserService.message.next(data.data)
           this.getToFavourite()
         }
       )
+      this.UserService.Delete.next(false);
     }else if(this.CurrentlyReading === true) {
       this.MybooksService.deleteCurrentlyReadLIst(id).subscribe(
-        ()=>{
+        (data:any)=>{
+          this.UserService.Delete.next(true);
+          this.UserService.message.next(data.data)
           this.getCurrentlyReadLIst()
         }
       )
+      this.UserService.Delete.next(false);
     }else if(this.Toread === true){
       this.MybooksService.deleteToReadInFeature(id).subscribe(
-        ()=>{
+        (data:any)=>{
+          this.UserService.Delete.next(true);
+          this.UserService.message.next(data.data)
           this.getToReadInFeature()
         }
       )
+      this.UserService.Delete.next(false);
     }
   }
 }

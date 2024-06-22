@@ -10,12 +10,19 @@ import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class RecommendComponent implements OnInit {
   faHeart: IconDefinition = faHeart;
-  Books: Book[] = [];
+  Books:any[]=[];
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
-    this.Books = this.homeService.getbooks;
-    console.log(this.Books);
+    this.homeService.getAllBook().subscribe(
+      (data:any)=> {
+        this.Books = data.data;
+      }
+    )
+  }
+
+  scrolltop() {
+    window.scroll(0,0);
   }
 }

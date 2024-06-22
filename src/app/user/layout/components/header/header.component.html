@@ -11,14 +11,14 @@
         <ul>
           <li *ngFor="let suggestionBook of suggestionsBook">
             <figure>
-              <img src={{suggestionBook.img}}>
+              <img src="http://zeyad200.runasp.net/{{suggestionBook.imageUrl}}">
             </figure>
             <figcaption>
               <div class="info">
-                <h4>{{suggestionBook.n}}</h4>
-                <p>{{suggestionBook.auth}}</p>
+                <h4>{{suggestionBook.title}}</h4>
+                <p>{{suggestionBook.author}}</p>
               </div>
-              <button type="button" class="btn btn-primary" [routerLink]="['Book',suggestionBook.i,'detail']" (click)="close()">See More</button>
+              <button type="button" class="btn btn-primary" [routerLink]="['Book',suggestionBook.id,'detail']" (click)="close()">See More</button>
             </figcaption>
           </li>
         </ul>
@@ -44,7 +44,7 @@
         </a>
       </li>
       <li (click)="show = !show">
-        <img src="../../../../../assets/imgs/WhatsApp Image 2024-04-05 at 21.42.20_534be846.jpg" alt="prof-img">
+        <img src="../../../../../assets/imgs/user.jpg" alt="prof-img">
         <div class="userinfo" [ngClass]="{active:show===true}">
           <div class="data">
             <figure>

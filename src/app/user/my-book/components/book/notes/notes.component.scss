@@ -55,9 +55,9 @@
         }
       }
       > span {
-        position: absolute;
-        bottom: 12px;
-        right: 15px;
+        position: fixed;
+        bottom: 138px;
+        left: 31%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -90,7 +90,7 @@
         background-color: $blue3;
         margin: 10px;
         color: $blue1;
-        max-height: 435px;
+        // max-height: 435px;
         overflow-y: scroll;
         box-shadow: 0px 0px 10px #eee;
         &::-webkit-scrollbar {
@@ -110,15 +110,30 @@
         padding: 10px;
         header {
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid $blue1;
+          padding: 5px 0px;
           span {
             cursor: pointer;
             margin-right: 12px;
             font: {
-              size:20px;
+              size:15px;
               weight:700;
             }
           }
+          p {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 0px;
+          }
+        }
+        >p {
+          margin-top: 4px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          max-width: 330px;
+          overflow-wrap: break-word;
         }
       }
     }

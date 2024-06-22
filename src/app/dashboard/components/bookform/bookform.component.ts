@@ -72,12 +72,11 @@ export class BookformComponent implements OnInit {
         Title:"sfda",
         Description:"dfalskjfdshfj",
         Author:"sdfadsfasd",
-        PublishTime:"10/2/2002",
-        bookfile:"dsfadsfa",
-        imagefile:"sfsdfasd",
-        CategoryId:10001
+        PublishTime:"",
+        bookfile:"",
+        imagefile:"",
+        CategoryId:1002
     };
-
       this.dashboardService.addBook(bookData).subscribe(
         (data) => {
           console.log(data);

@@ -40,19 +40,25 @@ export class CategoriesComponent  implements OnInit{
         (data:any)=> {
           this.message = data.data;
           this.DashboardService.newCategory.next(data);
+          this.DashboardService.show.next(true);
+          this.DashboardService.message.next(data.data)
           form.reset();
           this.update = false;
         }
       )
+      this.DashboardService.show.next(false);
     }else {
       this.DashboardService.addCatigory(form.value).subscribe(
         (data:any) => {
           form.reset();
           this.message = data.data;
           this.DashboardService.newCategory.next(data);
+          this.DashboardService.show.next(true);
+          this.DashboardService.message.next(data.data)
           this.update = false;
         }
       )
+      this.DashboardService.show.next(false);
     }
   }
 }

@@ -13,6 +13,10 @@ export class DashboardService {
   newCategory = new Subject<any>();
   Catigorytext = new Subject<string>();
   CatigoryaUpdate = new Subject<boolean>();
+
+  show = new Subject<boolean>();
+  Delete = new Subject<boolean>();
+  message = new Subject<string>();
   constructor(private http:HttpClient) { }
 
   getusers() {
@@ -45,7 +49,7 @@ export class DashboardService {
   }
 
   addBook(data:any) {
-    console.log("work");
+    console.log(data);
     return this.http.post("http://zeyad200.runasp.net/Api/V1/Book/AddBook",data);
   }
 

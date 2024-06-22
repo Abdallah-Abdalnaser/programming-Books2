@@ -1,3 +1,12 @@
+<div class="add" [ngClass]="{active: show===true}">
+  {{message}}
+  <div></div>
+</div>
+<div class="Delete" [ngClass]="{active: showDelete===true}">
+  {{message}}
+  <div></div>
+</div>
+
 <div class="content">
   <section [ngClass]="{close: close === true , open: close === false}">
     <div class="form">

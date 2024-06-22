@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { faArrowUpRightFromSquare, IconDefinition , faHeart , faBookBookmark } from '@fortawesome/free-solid-svg-icons';
 import { Book } from '../../../home/book.model';
 import { MybooksService } from '../../services/mybooks.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-bookinfo',
@@ -16,8 +17,8 @@ export class BookinfoComponent implements OnInit{
   faBookBookmark:IconDefinition=faBookBookmark;
   fetching:boolean=true;
   id!:number;
-  message:string='';
-  constructor(private route:ActivatedRoute ,private MybooksService:MybooksService) {}
+  constructor(private route:ActivatedRoute ,private MybooksService:MybooksService , private UserService:UserService) {}
+
 
 
   ngOnInit(): void {
@@ -40,25 +41,31 @@ export class BookinfoComponent implements OnInit{
   addtofavourite() {
     this.MybooksService.addToFavourite(this.id).subscribe(
       (data:any)=>{
-        this.message=data.data;
+        console.log(data);
+        this.UserService.show.next(true);
+        this.UserService.message.next(data.data)
       }
     )
+    this.UserService.show.next(false);
   }
 
   addToReadInFeature() {
     this.MybooksService.addToReadInFeature(this.id).subscribe(
       (data:any)=>{
-        this.message = data.data;
+        this.UserService.show.next(true);
+        this.UserService.message.next(data.data)
       }
     )
+    this.UserService.show.next(false);
   }
 
   CurrentlyReadLIst() {
     this.MybooksService.CurrentlyReadLIst(this.id).subscribe(
       (data:any)=> {
-        console.log(data);
-        this.message = data.data;
+        this.UserService.show.next(true);
+        this.UserService.message.next(data.data)
       }
     )
+    this.UserService.show.next(false);
   }
 }
