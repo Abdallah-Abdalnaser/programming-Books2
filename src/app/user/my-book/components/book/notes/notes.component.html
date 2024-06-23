@@ -1,5 +1,6 @@
 <div class="con">
 <form  #form="ngForm">
+  <span (click)="open()"class="Add" [ngClass]="{hidden:showNotes === false}">+</span>
   <h4>Chat Bot</h4>
   <div class="noteBox">
     <div class="spinner" [ngClass]="{active: fetching === false}">
@@ -15,7 +16,9 @@
       </header>
       <p>{{note.noteContent}}</p>
     </div>
-    <span (click)="open()" [ngClass]="{hidden:showNotes === false}">+</span>
+    <div class="notes" [ngClass]="{hidden:showquestion ===false}" *ngFor="let note of QA">
+      <p>{{note.body}}</p>
+    </div>
   </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Enter Your Text !" aria-describedby="emailHelp" ngModel name="text" required email #text>

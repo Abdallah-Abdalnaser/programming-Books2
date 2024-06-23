@@ -25,13 +25,21 @@ export class NotesComponent implements OnInit{
   notes:any[]=[];
   Bookid:string='';
   showNotes:boolean = false;
+  showquestion:boolean = false;
+  QA:any[]=[];
   constructor(private MybooksService:MybooksService ,private router:ActivatedRoute , private UserService:UserService) {}
 
   ngOnInit(): void {
     this.MybooksService.refresh.subscribe(
       (data)=> {
         if (data === true) {
-          this.shownotes();
+          this.MybooksService.showNotes(Number(this.Bookid)).subscribe(
+            (data:any)=> {
+              this.QA = [];
+              this.notes = data.data;
+              this.fetching = true
+            }
+          )
         }
       }
     )
@@ -46,33 +54,29 @@ export class NotesComponent implements OnInit{
 
   submit(form:NgForm) {
     this.fetching = false
-    this.show=false;
     this.text.nativeElement.value = '';
-    this.MybooksService.getsummarize(form.value).subscribe(
-      (data:any)=> {
-        this.notes= [];
-        this.Summarize = data.summary;
-        this.fetching = true;
-      }
-    )
+    this.getnotes();
   }
 
   submitQ(form:NgForm) {
-    this.fetching = false
-    this.show=false;
+    this.Summarize ='';
+    this.showquestion = !this.showquestion;
+    this.fetching = false;
+    this.showNotes = false;
     this.text.nativeElement.value = '';
     this.MybooksService.QuestionAswer(form.value).subscribe(
       (data:any)=> {
         this.notes= [];
-        this.Summarize = data[0].body;
+        this.QA = data;
         this.fetching = true;
+        console.log(this.QA);
       }
     )
   }
 
   submitL(form:NgForm) {
     this.fetching = false
-    this.show=false;
+    this.showNotes = false;
     this.text.nativeElement.value = '';
     this.MybooksService.translator(form.value).subscribe(
       (data:any)=> {
@@ -85,7 +89,7 @@ export class NotesComponent implements OnInit{
 
   submitG(form:NgForm) {
     this.fetching = false
-    this.show=false;
+    this.showNotes = false;
     this.text.nativeElement.value = '';
     this.MybooksService.gpt({prompt:form.value.text,num_token:50,num_beam:1,do:1}).subscribe(
       (data:any)=> {
@@ -99,19 +103,14 @@ export class NotesComponent implements OnInit{
   shownotes() {
     this.Summarize ='';
     this.showNotes = !this.showNotes;
-    this.fetching = false
-    this.MybooksService.showNotes(Number(this.Bookid)).subscribe(
-      (data:any)=> {
-        this.notes = data.data;
-        this.fetching = true
-      }
-    )
+    this.fetching = false;
+    this.getnotes();
   }
 
   deleteNote(id:number) {
     this.MybooksService.deleteNotes(id,Number(this.Bookid)).subscribe(
       (data:any)=> {
-        this.shownotes();
+        this.getnotes();
         this.UserService.Delete.next(true);
         this.UserService.message.next(data.data)
       }
@@ -121,5 +120,15 @@ export class NotesComponent implements OnInit{
 
   open() {
     this.MybooksService.close.next(false);
+  }
+
+  getnotes() {
+    this.MybooksService.showNotes(Number(this.Bookid)).subscribe(
+      (data:any)=> {
+        this.QA = [];
+        this.notes = data.data;
+        this.fetching = true
+      }
+    )
   }
 }
