@@ -8,15 +8,17 @@ import { Observable, Subject } from 'rxjs';
 export class DashboardService {
   Apilink:string ="http://zeyad200.runasp.net/Api/V1/";
   close = new Subject<boolean>();
+  udateBook = new Subject<boolean>();
   numberOfUsers = new Subject<number>();
   fetching = new Subject<boolean>();
   newCategory = new Subject<any>();
+  newBook = new Subject<any>();
   Catigorytext = new Subject<string>();
   CatigoryaUpdate = new Subject<boolean>();
-
   show = new Subject<boolean>();
   Delete = new Subject<boolean>();
   message = new Subject<string>();
+  Bookid = new Subject<number>();
   constructor(private http:HttpClient) { }
 
   getusers() {
@@ -48,13 +50,16 @@ export class DashboardService {
     return this.http.get(`${this.Apilink}Book/GetAllBooks`);
   }
 
+  getBookById(id:number) {
+    return this.http.get(`${this.Apilink}Book/GetBookById/${id}`);
+  }
+
   addBook(data:any) {
-    console.log(data);
     return this.http.post("http://zeyad200.runasp.net/Api/V1/Book/AddBook",data);
   }
 
-  updateBook(data:any) {
-    return this.http.put(`${this.Apilink}Book/UpdateBook`,data);
+  updateBook(data:any , id:number) {
+    return this.http.put(`${this.Apilink}Book/UpdateBook?Id=${id}`,data);
   }
 
   DeletBook(id:any) {

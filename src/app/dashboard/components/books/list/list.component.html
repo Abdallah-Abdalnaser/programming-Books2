@@ -20,8 +20,8 @@
         <td>{{Book.title}}</td>
         <td>{{ categoryMap.get(Book.categoryId) | async }}</td>
         <td>
-          <button type="button" class="btn btn-warning" (click)="open()">Edit</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-warning" (click)="open(Book.id)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="DeleteBook(Book.id)">Delete</button>
         </td>
       </tr>
     </tbody>

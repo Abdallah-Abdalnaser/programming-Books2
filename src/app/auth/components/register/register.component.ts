@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { faEye, faEyeSlash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'console';
 
 @Component({
   selector: 'app-register',
@@ -23,9 +24,17 @@ export class RegisterComponent {
     console.log(form.value);
     this.AuthService.register(form.value).subscribe(
       (data:any)=> {
+        this.AuthService.show.next(true);
+        this.AuthService.message.next(data.message)
         this.router.navigate(['/auth/login'],{relativeTo:this.route})
+      },
+      (error) => {
+        this.AuthService.Delete.next(true);
+        this.AuthService.message.next(error.message)
       }
     )
+    this.AuthService.show.next(false);
+    this.AuthService.Delete.next(false);
   }
 
   showpassword() {

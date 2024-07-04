@@ -53,9 +53,15 @@ export class NotesComponent implements OnInit{
   }
 
   submit(form:NgForm) {
+    this.QA =[]
     this.fetching = false
     this.text.nativeElement.value = '';
-    this.getnotes();
+    this.MybooksService.getsummarize(form.value).subscribe(
+      (data:any) => {
+        this.Summarize =data.summary;
+        this.fetching = true;
+      }
+    )
   }
 
   submitQ(form:NgForm) {
@@ -75,6 +81,7 @@ export class NotesComponent implements OnInit{
   }
 
   submitL(form:NgForm) {
+    this.QA =[];
     this.fetching = false
     this.showNotes = false;
     this.text.nativeElement.value = '';
@@ -88,6 +95,7 @@ export class NotesComponent implements OnInit{
   }
 
   submitG(form:NgForm) {
+    this.QA =[]
     this.fetching = false
     this.showNotes = false;
     this.text.nativeElement.value = '';

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 interface user {
   firstName:string,
@@ -16,6 +17,9 @@ interface user {
 })
 export class AuthService {
   apiLink:string="http://zeyad200.runasp.net/Api/V1/Authentication";
+  show = new Subject<boolean>();
+  Delete = new Subject<boolean>();
+  message = new Subject<string>();
   constructor(private http:HttpClient) { }
 
   logIn(data:{email:string,password:string}) {

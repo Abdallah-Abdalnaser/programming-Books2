@@ -1,3 +1,6 @@
+<div class="spinner" [ngClass]="{active: fetching === false}">
+  <img src="../../../../assets/imgs/book-review.gif" alt="">
+</div>
 <form action="" (ngSubmit)="onSubmit(form)" #form="ngForm">
   <header>
     <span (click)="closeform()">x</span>
@@ -7,7 +10,7 @@
       <img [src]="imageSrc" alt="">
       <label for="imageUrl">
         Upload Image
-        <input type="file" id="imageUrl" (change)="onImageChange($event)" ngModel required name="imagefile" #imageUrl="ngModel">
+        <input type="file" id="imageUrl" (change)="onImageChange($event)" ngModel required  #imageUrl="ngModel">
       </label>
     </figure>
     <figcaption>
@@ -36,7 +39,7 @@
 
   <div class="form-group">
     <label for="formFile" class="form-label">Upload Book</label>
-    <input class="form-control" type="file" id="formFile" name="bookfile" ngModel>
+    <input class="form-control" type="file" id="formFile"  (change)="onBookpathchange($event)" ngModel>
   </div>
 
   <div class="form-group">
@@ -46,6 +49,6 @@
   </div>
   <br>
   <div class="create">
-    <button type="submit" [disabled]="!form.valid" [ngClass]="{vaild: form.valid}">Add Book</button>
+    <button type="submit" [disabled]="!form.valid" [ngClass]="{vaild: form.valid}">{{checkState === true?'Update':'Add'}}</button>
   </div>
 </form>

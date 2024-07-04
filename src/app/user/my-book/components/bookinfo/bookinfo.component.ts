@@ -4,6 +4,7 @@ import { faArrowUpRightFromSquare, IconDefinition , faHeart , faBookBookmark } f
 import { Book } from '../../../home/book.model';
 import { MybooksService } from '../../services/mybooks.service';
 import { UserService } from '../../../services/user.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-bookinfo',
@@ -41,12 +42,16 @@ export class BookinfoComponent implements OnInit{
   addtofavourite() {
     this.MybooksService.addToFavourite(this.id).subscribe(
       (data:any)=>{
-        console.log(data);
         this.UserService.show.next(true);
         this.UserService.message.next(data.data)
+      },
+      (error) => {
+        this.UserService.Delete.next(true);
+        this.UserService.message.next(error.error.message);
       }
     )
     this.UserService.show.next(false);
+    this.UserService.Delete.next(false);
   }
 
   addToReadInFeature() {
@@ -54,9 +59,14 @@ export class BookinfoComponent implements OnInit{
       (data:any)=>{
         this.UserService.show.next(true);
         this.UserService.message.next(data.data)
+      },
+      (error) => {
+        this.UserService.Delete.next(true);
+        this.UserService.message.next("This Book is Already Exsists");
       }
     )
     this.UserService.show.next(false);
+    this.UserService.Delete.next(false);
   }
 
   CurrentlyReadLIst() {

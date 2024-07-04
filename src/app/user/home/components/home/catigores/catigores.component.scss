@@ -12,6 +12,8 @@
   width: fit-content;
   figure {
     position: relative;
+    min-width: 249px;
+    max-width: 249px;
     width: 86%;
     margin-bottom: 25px;
     img {
@@ -51,6 +53,11 @@
     width: 86%;
     height: 150px;
     h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 41px;
+      max-height: 41px;
       margin: 0px;
       padding: 0px;
       color: $blue1;
